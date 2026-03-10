@@ -1,0 +1,219 @@
+---
+// Direccion.astro
+---
+
+<section class="py-8 px-4 relative">
+  <div class="max-w-xl mx-auto text-center relative">
+    <!-- 🏛️ ICONO DIRECCIÓN CON FLORES EN LOS BORDES -->
+    <div class="relative mb-4" id="icono-direccion">
+      <!-- 🌸 FLORES EN EL BORDE IZQUIERDO -->
+      <div
+        class="absolute left-0 top-1/2 -translate-y-1/2 w-10 pointer-events-none -ml-6 sm:-ml-7 md:-ml-8"
+        id="flores-dir-izq"
+      >
+        <img
+          src="/imagenes/FlorLateral.webp"
+          alt="Flores decorativas izquierda"
+          class="w-full h-auto object-contain"
+        />
+      </div>
+
+      <!-- TÍTULO CEREMONIA -->
+      <div class="mb-2" id="titulo-direccion">
+        <h2
+          class="font-charm text-2xl md:text-3xl text-[#FF9E7F] font-bold tracking-wide"
+        >
+          Ceremonia Religiosa
+        </h2>
+      </div>
+
+      <!-- ICONO CENTRAL -->
+      <div class="flex justify-center">
+        <img
+          src="/imagenes/iglesia.png"
+          alt="Icono de dirección"
+          class="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain icono-azul"
+        />
+      </div>
+
+      <!-- 🌸 FLORES EN EL BORDE DERECHO -->
+      <div
+        class="absolute right-0 top-1/2 -translate-y-1/2 w-10 pointer-events-none -mr-6 sm:-mr-7 md:-mr-8"
+        id="flores-dir-der"
+      >
+        <img
+          src="/imagenes/FlorLateral.webp"
+          alt="Flores decorativas derecha"
+          class="w-full h-auto object-contain scale-x-[-1]"
+        />
+      </div>
+    </div>
+
+    <!-- INFORMACIÓN DE UBICACIÓN -->
+    <div class="mb-4" id="info-direccion">
+      <!-- Nombre del lugar -->
+      <h3 class="font-charm text-xl md:text-2xl text-[#3A5A97] font-bold mb-2">
+        Templo Santiago Apóstol de El Paso
+      </h3>
+
+      <!-- Dirección -->
+      <p
+        class="font-charm text-lg md:text-xl text-[#3A5A97]/70 leading-relaxed mb-3"
+      >
+        El Paso, Municipio de Quillacollo
+      </p>
+
+      <!-- Hora -->
+      <p class="font-charm text-xl md:text-2xl text-[#FF9E7F] font-bold">
+        Hora: 14:30
+      </p>
+    </div>
+
+    <!-- BOTÓN VER UBICACIÓN -->
+    <div class="flex justify-center" id="boton-ubicacion">
+      <a
+        href="https://maps.app.goo.gl/8Qv9a71T7AK8DR4Q8"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="boton-ubicacion-custom"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+          ></path>
+        </svg>
+        Ver Ubicación
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  if (typeof window !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.set("#icono-direccion", { opacity: 0, scale: 0.8 });
+      gsap.set("#info-direccion", { opacity: 0, scale: 0.9 });
+      gsap.set("#boton-ubicacion", { opacity: 0, scale: 0.9 });
+      gsap.set("#flores-dir-izq", { opacity: 0, x: -30 });
+      gsap.set("#flores-dir-der", { opacity: 0, x: 30 });
+
+      ScrollTrigger.create({
+        trigger: "#icono-direccion",
+        start: "top 85%",
+        end: "top 20%",
+        onEnter: () => {
+          const tl = gsap.timeline();
+          tl.to(
+            "#icono-direccion, #flores-dir-izq, #flores-dir-der, #info-direccion, #boton-ubicacion",
+            {
+              opacity: 1,
+              duration: 1,
+              ease: "power2.out",
+            },
+          )
+            .to(
+              "#icono-direccion",
+              { scale: 1, duration: 1, ease: "back.out(1.5)" },
+              "<",
+            )
+            .to(
+              "#flores-dir-izq",
+              { x: 0, duration: 1, ease: "power2.out" },
+              "<",
+            )
+            .to(
+              "#flores-dir-der",
+              { x: 0, duration: 1, ease: "power2.out" },
+              "<",
+            )
+            .to(
+              "#info-direccion, #boton-ubicacion",
+              { scale: 1, duration: 1, ease: "back.out(1.2)" },
+              "<",
+            );
+        },
+        onLeaveBack: () => {
+          const tl = gsap.timeline();
+          tl.to(
+            "#icono-direccion, #flores-dir-izq, #flores-dir-der, #info-direccion, #boton-ubicacion",
+            {
+              opacity: 0,
+              duration: 0.5,
+              ease: "power2.in",
+            },
+          )
+            .to(
+              "#icono-direccion",
+              { scale: 0.8, duration: 0.5, ease: "power2.in" },
+              "<",
+            )
+            .to(
+              "#flores-dir-izq",
+              { x: -30, duration: 0.5, ease: "power2.in" },
+              "<",
+            )
+            .to(
+              "#flores-dir-der",
+              { x: 30, duration: 0.5, ease: "power2.in" },
+              "<",
+            )
+            .to(
+              "#info-direccion, #boton-ubicacion",
+              { scale: 0.9, duration: 0.5, ease: "power2.in" },
+              "<",
+            );
+        },
+      });
+    });
+  }
+</script>
+
+<style>
+  /* Icono con tinte azul */
+  .icono-azul {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(50%) saturate(800%)
+      hue-rotate(195deg) brightness(90%) contrast(90%);
+    transition:
+      filter 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  /* Botón de ubicación personalizado */
+  .boton-ubicacion-custom {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #3a5a97;
+    color: white;
+    font-family: "Charm", cursive;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(58, 90, 151, 0.35);
+    transition: all 0.3s ease;
+    letter-spacing: 0.03em;
+  }
+
+  .boton-ubicacion-custom:hover {
+    background-color: #2d4a7a;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(58, 90, 151, 0.45);
+  }
+
+  .boton-ubicacion-custom:active {
+    transform: translateY(-1px) scale(1.02);
+  }
+</style>

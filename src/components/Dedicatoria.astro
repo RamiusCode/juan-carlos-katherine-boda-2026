@@ -1,0 +1,155 @@
+<!-- ═══════════════════════════════════════════════════════════ --><!-- 💒 COMPONENTE DEDICATORIA - INVITACIÓN DE BODA              --><!-- ═══════════════════════════════════════════════════════════ -->
+<section class="py-8 px-4 relative">
+  <div class="max-w-3xl mx-auto">
+    <!-- 🌸 FLORES ARRIBA -->
+    <div class="flex justify-center mb-4" id="flores-arriba-ded">
+      <img
+        src="/imagenes/SeparadoresDorado.webp"
+        alt="Flores decorativas superiores"
+        class="w-40 sm:w-48 md:w-56 lg:w-64 h-auto object-contain separador-melon"
+      />
+    </div>
+
+    <!-- 📖 TEXTO DEDICATORIA - MATEO 19:6 -->
+    <div class="text-center px-6">
+      <p
+        class="font-charm text-lg sm:text-xl md:text-2xl text-[#3A5A97] leading-relaxed mb-4"
+        id="texto-ded"
+      >
+        Así que no son ya más dos, sino una sola carne; por tanto, lo que Dios
+        ha unido, no lo separe el hombre.
+      </p>
+
+      <!-- 📜 REFERENCIA BÍBLICA -->
+      <p
+        class="font-charm text-base sm:text-lg md:text-xl text-[#3A5A97] italic"
+        id="referencia-ded"
+      >
+        Mateo 19:6
+      </p>
+    </div>
+
+    <!-- 🌸 FLORES ABAJO -->
+    <div class="flex justify-center mt-4" id="flores-abajo-ded">
+      <img
+        src="/imagenes/SeparadoresDorado.webp"
+        alt="Flores decorativas inferiores"
+        class="w-40 sm:w-48 md:w-56 lg:w-64 h-auto object-contain separador-melon"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🎬 ANIMACIONES CON GSAP                                     -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("💒 Iniciando animaciones de dedicatoria...");
+
+    gsap.set("#flores-arriba-ded", { opacity: 0, y: -30 });
+    gsap.set("#texto-ded", { opacity: 0, scale: 0.9 });
+    gsap.set("#referencia-ded", { opacity: 0, scale: 0.9 });
+    gsap.set("#flores-abajo-ded", { opacity: 0, y: 30 });
+
+    ScrollTrigger.create({
+      trigger: "#texto-ded",
+      start: "top 100%",
+      end: "top 20%",
+      onEnter: () => {
+        console.log("💒 Dedicatoria apareciendo...");
+        animarEntrada();
+      },
+      onLeaveBack: () => {
+        console.log("💒 Dedicatoria desapareciendo...");
+        animarSalida();
+      },
+    });
+
+    function animarEntrada() {
+      const tl = gsap.timeline();
+      tl.to(
+        "#flores-arriba-ded, #texto-ded, #referencia-ded, #flores-abajo-ded",
+        {
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+        },
+      )
+        .to(
+          "#flores-arriba-ded",
+          { y: 0, duration: 1, ease: "power2.out" },
+          "<",
+        )
+        .to("#texto-ded", { scale: 1, duration: 1, ease: "back.out(1.2)" }, "<")
+        .to(
+          "#referencia-ded",
+          { scale: 1, duration: 1, ease: "back.out(1.2)" },
+          "<",
+        )
+        .to(
+          "#flores-abajo-ded",
+          { y: 0, duration: 1, ease: "power2.out" },
+          "<",
+        );
+    }
+
+    function animarSalida() {
+      const tl = gsap.timeline();
+      tl.to(
+        "#flores-arriba-ded, #texto-ded, #referencia-ded, #flores-abajo-ded",
+        {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.in",
+        },
+      )
+        .to(
+          "#flores-arriba-ded",
+          { y: -30, duration: 0.5, ease: "power2.in" },
+          "<",
+        )
+        .to("#texto-ded", { scale: 0.9, duration: 0.5, ease: "power2.in" }, "<")
+        .to(
+          "#referencia-ded",
+          { scale: 0.9, duration: 0.5, ease: "power2.in" },
+          "<",
+        )
+        .to(
+          "#flores-abajo-ded",
+          { y: 30, duration: 0.5, ease: "power2.in" },
+          "<",
+        );
+    }
+  });
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🎨 ESTILOS CSS                                              -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<style>
+  #texto-ded {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  #referencia-ded {
+    letter-spacing: 0.05em;
+  }
+
+  /* Tinte melón para los separadores */
+  .separador-melon {
+    filter: sepia(1) saturate(2) hue-rotate(320deg) brightness(1.1);
+  }
+
+  @media (max-width: 640px) {
+    section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+</style>

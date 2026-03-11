@@ -3,12 +3,10 @@
   class="w-full max-w-[350px] pt-16 sm:max-w-sm mx-auto sm:mt-4 px-4"
   id="music-player-container"
 >
-  <!-- Card principal con efecto glass -->
   <div
     class="bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl p-6 sm:p-8 shadow-lg relative overflow-hidden"
     id="player-card"
   >
-    <!-- Efecto de brillo de fondo -->
     <div
       class="absolute inset-0 bg-gradient-to-br from-[#1B3A6B]/10 via-transparent to-[#2E5FA3]/5 pointer-events-none"
     >
@@ -22,18 +20,16 @@
     >
     </div>
 
-    <!-- Contenido del reproductor -->
     <div class="relative z-10">
-      <!-- Título elegante -->
+      <!-- Título -->
       <div class="text-center mb-3" id="player-title">
         <div class="text-center z-30 mb-2 w-full" id="titulo-container">
           <div
             class="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8"
           >
-            <!-- TEXTO CENTRAL -->
             <div id="titulo" class="flex-shrink min-w-0">
               <h3
-                class="font-great-vibes text-xl sm:text-2xl md:text-2xl text-[#1B3A6B] mb-2"
+                class="font-great-vibes text-xl sm:text-2xl md:text-2xl text-[#B8962E] mb-2"
               >
                 Mi Canción Especial
               </h3>
@@ -42,39 +38,36 @@
         </div>
         <p
           id="romantic-text"
-          class="text-xs sm:text-sm italic text-[#2E5FA3]/70 font-medium w-full text-center px-2"
+          class="text-xs sm:text-sm italic text-[#B8962E]/70 font-medium w-full text-center px-2"
         >
           ✨ Una melodía para recordar siempre ✨
         </p>
       </div>
 
-      <!-- Controles principales -->
+      <!-- Controles -->
       <div
         class="flex items-center justify-center space-x-6 sm:space-x-10"
         id="controls-container"
       >
-        <!-- Botón anterior -->
+        <!-- Botón anterior: dorado -->
         <button
           id="prevBtn"
-          class="text-[#1B3A6B]/60 hover:text-[#1B3A6B] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
+          class="text-[#B8962E]/60 hover:text-[#B8962E] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M7 6v12l-2-2V8l2-2zm2 6l8-5v10l-8-5z"></path>
           </svg>
         </button>
 
-        <!-- Botón principal corazón -->
+        <!-- Corazón play: azul -->
         <button
           id="playPauseBtn"
           class="relative text-[#2E5FA3] text-4xl sm:text-5xl transition-all duration-300 transform hover:scale-110 focus:outline-none group"
         >
-          <!-- Fondo del botón corazón -->
           <div
             class="absolute inset-0 bg-gradient-to-br from-[#2E5FA3]/20 to-[#1B3A6B]/10 rounded-full blur-lg scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           >
           </div>
-
-          <!-- Icono corazón -->
           <div class="relative z-10 transform transition-all duration-300">
             <svg
               width="48"
@@ -87,8 +80,6 @@
                 d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
               ></path>
             </svg>
-
-            <!-- Icono play/pause superpuesto -->
             <div class="absolute inset-0 flex items-center justify-center">
               <svg
                 id="play-icon"
@@ -112,8 +103,6 @@
               </svg>
             </div>
           </div>
-
-          <!-- Ondas de pulso -->
           <div
             class="absolute inset-0 pointer-events-none"
             id="heart-particles"
@@ -121,10 +110,10 @@
           </div>
         </button>
 
-        <!-- Botón siguiente -->
+        <!-- Botón siguiente: dorado -->
         <button
           id="nextBtn"
-          class="text-[#1B3A6B]/60 hover:text-[#1B3A6B] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
+          class="text-[#B8962E]/60 hover:text-[#B8962E] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17 18V6l2 2v8l-2 2zm-2-6L7 7v10l8-5z"></path>
@@ -132,17 +121,15 @@
         </button>
       </div>
 
-      <!-- Barra de progreso elegante -->
+      <!-- Barra de progreso -->
       <div class="px-2 sm:px-4" id="progress-container">
         <div
-          class="flex items-center justify-between text-xs sm:text-sm text-[#1B3A6B]/60 mb-3 font-medium"
+          class="flex items-center justify-between text-xs sm:text-sm text-[#B8962E]/60 mb-3 font-medium"
         >
           <span id="currentTime">0:00</span>
-          <span class="text-[#2E5FA3]/80">♪</span>
+          <span class="text-[#B8962E]/80">♪</span>
           <span id="totalDuration">--:--</span>
         </div>
-
-        <!-- Barra de progreso personalizada -->
         <div class="relative">
           <input
             type="range"
@@ -157,13 +144,11 @@
   </div>
 </div>
 
-<!-- Audio element -->
 <audio id="music-audio" preload="auto">
   <source src="/musica/melo.mp3" type="audio/mpeg" />
   Tu navegador no soporta audio HTML5.
 </audio>
 
-<!-- SCRIPTS CON TIMING INTELIGENTE -->
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -175,8 +160,6 @@
   let duration = 0;
 
   document.addEventListener("DOMContentLoaded", () => {
-    console.log("🎵 Iniciando reproductor con timing inteligente...");
-
     gsap.set("#music-player-container", { opacity: 0, y: 50, scale: 0.9 });
     gsap.set("#player-title", { opacity: 0, y: 30 });
     gsap.set("#controls-container", { opacity: 0, scale: 0.8 });
@@ -278,16 +261,12 @@
     const playIcon = document.getElementById("play-icon");
     const pauseIcon = document.getElementById("pause-icon");
     const heartBtn = document.getElementById("playPauseBtn");
-
     if (!(audioElement instanceof HTMLAudioElement)) return;
-
     const audio = audioElement;
-
     if (!isPlaying) {
       audio.play().catch((error) => console.log("Error al reproducir:", error));
       if (playIcon) playIcon.classList.add("hidden");
       if (pauseIcon) pauseIcon.classList.remove("hidden");
-
       gsap.to(heartBtn, { scale: 1.15, duration: 0.3, ease: "back.out(2)" });
       gsap.to(heartBtn, {
         scale: 1,
@@ -295,7 +274,6 @@
         delay: 0.3,
         ease: "power2.out",
       });
-
       createSimpleWaves();
       isPlaying = true;
       startProgress();
@@ -310,23 +288,10 @@
   function createSimpleWaves() {
     const container = document.getElementById("heart-particles");
     if (!container) return;
-
     for (let i = 0; i < 3; i++) {
       const wave = document.createElement("div");
-      wave.style.cssText = `
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 60px;
-        height: 60px;
-        border: 2px solid #2E5FA3;
-        border-radius: 50%;
-        opacity: 0;
-        pointer-events: none;
-      `;
+      wave.style.cssText = `position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60px;height:60px;border:2px solid #2E5FA3;border-radius:50%;opacity:0;pointer-events:none;`;
       container.appendChild(wave);
-
       gsap
         .timeline()
         .to(wave, {
@@ -353,7 +318,6 @@
   function previousTrack() {
     gsap.to("#prevBtn", { scale: 1.2, duration: 0.1, yoyo: true, repeat: 1 });
   }
-
   function nextTrack() {
     gsap.to("#nextBtn", { scale: 1.2, duration: 0.1, yoyo: true, repeat: 1 });
   }
@@ -361,7 +325,6 @@
   function seekAudio() {
     const progressBarElement = document.getElementById("progressBar");
     const audioElement = document.getElementById("music-audio");
-
     if (
       progressBarElement instanceof HTMLInputElement &&
       audioElement instanceof HTMLAudioElement
@@ -376,16 +339,13 @@
   function startProgress() {
     const audioElement = document.getElementById("music-audio");
     if (!(audioElement instanceof HTMLAudioElement)) return;
-
     const interval = setInterval(() => {
       if (!isPlaying) {
         clearInterval(interval);
         return;
       }
-
       currentTime = audioElement.currentTime;
       duration = audioElement.duration || duration;
-
       if (currentTime >= duration) {
         isPlaying = false;
         const playIcon = document.getElementById("play-icon");
@@ -412,7 +372,6 @@
     const currentTimeEl = document.getElementById("currentTime");
     const totalDurationEl = document.getElementById("totalDuration");
     const audioElement = document.getElementById("music-audio");
-
     if (audioElement instanceof HTMLAudioElement) {
       if (currentTimeEl) {
         const minutes = Math.floor(audioElement.currentTime / 60);
@@ -456,7 +415,6 @@
     border-radius: 15px;
   }
 
-  /* ✅ Thumb del slider: gradiente azul marino → azul claro */
   .slider-elegant::-webkit-slider-thumb {
     appearance: none;
     width: 20px;
@@ -468,12 +426,10 @@
     border: 3px solid rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
   }
-
   .slider-elegant::-webkit-slider-thumb:hover {
     transform: scale(1.2);
     box-shadow: 0 4px 12px rgba(46, 95, 163, 0.5);
   }
-
   .slider-elegant::-moz-range-thumb {
     width: 20px;
     height: 20px;
@@ -499,11 +455,9 @@
       transform: scale(1.15);
     }
   }
-
   #playPauseBtn:hover {
     animation: heartbeat 1.5s ease-in-out infinite;
   }
-
   button:not(#playPauseBtn):hover {
     transform: translateY(-2px) scale(1.05);
   }
@@ -517,7 +471,7 @@
     bottom: -2px;
     background: linear-gradient(
       45deg,
-      rgba(27, 58, 107, 0.1),
+      rgba(184, 150, 46, 0.1),
       transparent,
       rgba(46, 95, 163, 0.1)
     );
@@ -526,7 +480,6 @@
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-
   #player-card:hover::before {
     opacity: 1;
   }

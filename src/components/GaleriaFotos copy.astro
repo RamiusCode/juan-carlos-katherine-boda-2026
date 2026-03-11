@@ -2,8 +2,11 @@
 // Galeria.astro
 ---
 
-<section class="py-4 px-4 relative overflow-hidden">
-    <div class="max-w-7xl sm:max-w-sm md:max-w-xl mx-auto relative z-10">
+
+
+<!-- CONTENIDO -->
+<section class="py-6 px-4 relative overflow-hidden" id="seccion-galeria">
+ <div class="max-w-7xl sm:max-w-sm md:max-w-xl mx-auto relative z-10">
         <!-- TÍTULO -->
         <div class="text-center mb-20" id="titulo-galeria">
             <!-- Línea superior decorativa -->
@@ -560,19 +563,27 @@
         </div>
     </div>
 
-    <!-- MODAL -->
+    <!-- MODAL FULLSCREEN -->
     <div
         id="modal-galeria"
-        class="fixed inset-0 bg-black/97 backdrop-blur-3xl z-50 hidden items-center justify-center"
+        class="fixed inset-0 z-50 hidden items-center justify-center"
+        style="background: rgba(0,0,0,0.96);"
     >
+        <div
+            class="absolute inset-0 pointer-events-none overflow-hidden"
+            id="modal-particulas"
+        >
+        </div>
+
         <button
             id="cerrar-modal"
-            class="absolute top-6 right-6 md:top-10 md:right-10 w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-2xl flex items-center justify-center transition-all duration-300 group z-50 border border-white/20 hover:border-[#FF9E7F]/40 hover:rotate-90"
+            class="absolute top-6 right-6 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 z-50 hover:rotate-90"
+            style="background: rgba(235,204,196,0.15); border: 1px solid rgba(235,204,196,0.3);"
         >
             <svg
-                class="w-6 h-6 md:w-7 md:h-7 text-white transition-transform duration-300"
+                class="w-5 h-5"
                 fill="none"
-                stroke="currentColor"
+                stroke="#c9968d"
                 viewBox="0 0 24 24"
             >
                 <path
@@ -584,97 +595,81 @@
         </button>
 
         <div
-            class="relative w-full h-full flex items-center justify-center px-2 md:px-16 lg:px-24"
+            class="relative w-full h-full flex items-center justify-center px-4 md:px-20"
         >
             <button
                 id="btn-anterior"
-                class="absolute left-4 md:left-8 lg:left-12 w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 hover:bg-[#FF9E7F]/30 backdrop-blur-2xl flex items-center justify-center transition-all duration-300 z-40 border border-white/20 hover:border-[#FF9E7F]/50 group hover:scale-110"
+                class="absolute left-3 md:left-8 z-40 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                style="background: rgba(235,204,196,0.12); border: 1px solid rgba(235,204,196,0.25);"
             >
                 <svg
-                    class="w-7 h-7 text-white group-hover:-translate-x-0.5 transition-transform duration-300"
+                    class="w-6 h-6"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="#c9968d"
                     viewBox="0 0 24 24"
                 >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        stroke-width="2.5"
+                        stroke-width="2"
                         d="M15 19l-7-7 7-7"></path>
                 </svg>
             </button>
 
             <div
-                class="relative max-w-6xl w-full overflow-hidden"
+                class="relative w-full max-w-xs md:max-w-md z-30"
                 id="modal-contenido"
             >
-                <div
-                    id="carrusel-track"
-                    class="flex transition-transform duration-700 ease-out"
-                >
-                </div>
-
-                <div
-                    class="absolute top-6 left-6 md:top-8 md:left-8 z-30 opacity-0 animate-fade-in"
-                    id="info-foto"
-                >
+                <div class="absolute -inset-4 pointer-events-none">
                     <div
-                        class="bg-white/10 backdrop-blur-2xl px-6 py-3 md:px-8 md:py-4 rounded-2xl border border-white/20 shadow-2xl"
+                        class="absolute top-0 left-0 w-6 h-6 border-t border-l border-[#c9968d]/30"
                     >
-                        <p
-                            class="text-white font-charm text-base md:text-lg font-semibold"
-                            id="titulo-foto"
-                        >
-                            Momento Especial
-                        </p>
+                    </div>
+                    <div
+                        class="absolute top-0 right-0 w-6 h-6 border-t border-r border-[#c9968d]/30"
+                    >
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-[#c9968d]/30"
+                    >
+                    </div>
+                    <div
+                        class="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-[#c9968d]/30"
+                    >
                     </div>
                 </div>
-
-                <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30">
-                    <div
-                        class="bg-white/10 backdrop-blur-2xl px-8 py-4 rounded-full border border-white/20 shadow-2xl"
-                    >
-                        <div class="flex items-center gap-4">
-                            <span
-                                id="numero-actual"
-                                class="text-white font-charm text-2xl md:text-3xl font-bold"
-                                >1</span
-                            >
-                            <div class="w-px h-8 bg-white/30"></div>
-                            <span
-                                id="numero-total"
-                                class="text-white/60 font-charm text-xl md:text-2xl"
-                                >6</span
-                            >
-                        </div>
-                    </div>
-                </div>
-
+                <div id="modal-track" class="flex will-change-transform"></div>
                 <div
-                    class="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 hidden md:block"
+                    class="absolute -bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-3 whitespace-nowrap"
                 >
-                    <div
-                        class="flex gap-3 bg-white/5 backdrop-blur-2xl px-6 py-4 rounded-full border border-white/10"
+                    <span
+                        id="modal-num"
+                        class="font-cathylise text-[#c9968d]/70 text-base"
+                        >01</span
                     >
-                        <div id="miniaturas-nav" class="flex gap-3"></div>
-                    </div>
+                    <div class="flex gap-1" id="modal-dots-mini"></div>
+                    <span
+                        class="font-cathylise text-white/30 text-base"
+                        id="modal-total">09</span
+                    >
                 </div>
             </div>
 
             <button
                 id="btn-siguiente"
-                class="absolute right-4 md:right-8 lg:right-12 w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 hover:bg-[#FF9E7F]/30 backdrop-blur-2xl flex items-center justify-center transition-all duration-300 z-40 border border-white/20 hover:border-[#FF9E7F]/50 group hover:scale-110"
+                class="absolute right-3 md:right-8 z-40 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                style="background: rgba(235,204,196,0.12); border: 1px solid rgba(235,204,196,0.25);"
             >
                 <svg
-                    class="w-7 h-7 text-white group-hover:translate-x-0.5 transition-transform duration-300"
+                    class="w-6 h-6"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="#c9968d"
                     viewBox="0 0 24 24"
                 >
                     <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        stroke-width="2.5"
+                        stroke-width="2"
                         d="M9 5l7 7-7 7"></path>
                 </svg>
             </button>
@@ -685,450 +680,623 @@
 <script>
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
-
     gsap.registerPlugin(ScrollTrigger);
 
     if (typeof window !== "undefined") {
         document.addEventListener("DOMContentLoaded", () => {
-            gsap.set("#titulo-galeria", { opacity: 0, y: -40 });
-            gsap.set(".foto-card", { opacity: 0, y: 60, scale: 0.9 });
-            gsap.set("#ornamento-inferior", { opacity: 0, scale: 0.8 });
+            gsap.set("#galeria-onda", { opacity: 0, y: -20 });
+            gsap.set("#linea-deco", { opacity: 0 });
+            gsap.set("#texto-historia", { opacity: 0, y: 20 });
+            gsap.set("#flor-galeria", { opacity: 0, x: 30 });
+            gsap.set("#galeria-wrapper", { opacity: 0, scale: 0.96 });
+            gsap.set("#miniaturas-container", { opacity: 0, y: 10 });
+            gsap.set("#btn-galeria-container", { opacity: 0, y: 10 });
+            gsap.set("#credito-galeria", { opacity: 0 });
 
             ScrollTrigger.create({
-                trigger: "#titulo-galeria",
+                trigger: "#seccion-galeria",
                 start: "top 85%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse",
-                animation: gsap.to("#titulo-galeria", {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.4,
-                    ease: "power3.out",
-                    paused: true,
-                }),
-            });
-
-            ScrollTrigger.create({
-                trigger: ".foto-card",
-                start: "top 100%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse",
-                animation: gsap.to(".foto-card", {
-                    opacity: 1,
-                    scale: 1,
-                    y: 0,
-                    duration: 1,
-                    stagger: { amount: 0.6, from: "start", ease: "power2.out" },
-                    ease: "power3.out",
-                    paused: true,
-                }),
-            });
-
-            ScrollTrigger.create({
-                trigger: "#ornamento-inferior",
-                start: "top 95%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse",
-                animation: gsap.to("#ornamento-inferior", {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 1,
-                    ease: "back.out(1.7)",
-                    paused: true,
-                }),
+                onEnter: () => {
+                    const tl = gsap.timeline();
+                    tl.to("#galeria-onda", {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                    })
+                        .to(
+                            "#linea-deco",
+                            { opacity: 1, duration: 0.6 },
+                            "-=0.3",
+                        )
+                        .to(
+                            "#texto-historia",
+                            {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.8,
+                                ease: "power2.out",
+                            },
+                            "-=0.3",
+                        )
+                        .to(
+                            "#flor-galeria",
+                            {
+                                opacity: 1,
+                                x: 0,
+                                duration: 0.7,
+                                ease: "power2.out",
+                            },
+                            "-=0.4",
+                        )
+                        .to(
+                            "#galeria-wrapper",
+                            {
+                                opacity: 1,
+                                scale: 1,
+                                duration: 1,
+                                ease: "power3.out",
+                            },
+                            "-=0.3",
+                        )
+                        .to(
+                            "#miniaturas-container",
+                            {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.6,
+                                ease: "power2.out",
+                            },
+                            "-=0.2",
+                        )
+                        .to(
+                            "#btn-galeria-container",
+                            {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.6,
+                                ease: "back.out(1.5)",
+                            },
+                            "-=0.3",
+                        )
+                        .to(
+                            "#credito-galeria",
+                            { opacity: 1, duration: 0.6 },
+                            "-=0.3",
+                        );
+                },
+                onLeaveBack: () => {
+                    gsap.set("#galeria-onda", { opacity: 0, y: -20 });
+                    gsap.set("#linea-deco", { opacity: 0 });
+                    gsap.set("#texto-historia", { opacity: 0, y: 20 });
+                    gsap.set("#flor-galeria", { opacity: 0, x: 30 });
+                    gsap.set("#galeria-wrapper", { opacity: 0, scale: 0.96 });
+                    gsap.set("#miniaturas-container", { opacity: 0, y: 10 });
+                    gsap.set("#btn-galeria-container", { opacity: 0, y: 10 });
+                    gsap.set("#credito-galeria", { opacity: 0 });
+                },
             });
 
             const fotos = [
-                { src: "/imagenes/Foto1.webp", titulo: "Momento Especial 1" },
-                { src: "/imagenes/Foto2.webp", titulo: "Momento Especial 2" },
-                { src: "/imagenes/Foto3.webp", titulo: "Momento Especial 3" },
-                { src: "/imagenes/Foto4.webp", titulo: "Momento Especial 4" },
-                { src: "/imagenes/Foto5.webp", titulo: "Momento Especial 5" },
-                { src: "/imagenes/Foto6.webp", titulo: "Momento Especial 6" },
+                { src: "/imagenes/fot1.webp", alt: "Nuestra historia 1" },
+                { src: "/imagenes/foto2.webp", alt: "Nuestra historia 2" },
+                { src: "/imagenes/foto3.webp", alt: "Nuestra historia 3" },
+                { src: "/imagenes/fot4.webp", alt: "Nuestra historia 4" },
+                { src: "/imagenes/fot5.webp", alt: "Nuestra historia 5" },
+                { src: "/imagenes/fot6.webp", alt: "Nuestra historia 6" },
+                { src: "/imagenes/foto7.webp", alt: "Nuestra historia 7" },
+                { src: "/imagenes/foto8.webp", alt: "Nuestra historia 8" },
+                { src: "/imagenes/foto9.webp", alt: "Nuestra historia 9" },
             ];
 
-            let indiceActual = 0;
-            const modal = document.getElementById("modal-galeria");
-            const carruselTrack = document.getElementById("carrusel-track");
-            const numeroActual = document.getElementById("numero-actual");
-            const numeroTotal = document.getElementById("numero-total");
-            const tituloFoto = document.getElementById("titulo-foto");
-            const infoFoto = document.getElementById("info-foto");
-            const miniaturasNav = document.getElementById("miniaturas-nav");
-            const btnAnterior = document.getElementById("btn-anterior");
-            const btnSiguiente = document.getElementById("btn-siguiente");
-            const cerrarModal = document.getElementById("cerrar-modal");
+            const DURACION = 4500;
+            const CIRCUNFERENCIA = 94.2;
+            const viewport = document.getElementById("slides-viewport");
+            const dotsLateral = document.getElementById("dots-lateral");
+            const numSlide = document.getElementById("num-slide");
+            const progresoCirculo = document.getElementById("progreso-circulo");
+            const miniaturasTrack = document.getElementById("miniaturas-track");
 
-            if (carruselTrack && numeroTotal) {
-                numeroTotal.textContent = fotos.length.toString();
-                fotos.forEach((foto) => {
-                    const slide = document.createElement("div");
-                    slide.className =
-                        "min-w-full flex items-center justify-center px-4 md:px-12";
-                    slide.innerHTML = `
-                        <div class="relative max-w-5xl w-full">
-                            <div class="absolute -inset-12 bg-gradient-to-r from-[#FF9E7F]/20 via-[#ffb89e]/30 to-[#FF9E7F]/20 rounded-3xl blur-3xl opacity-50"></div>
-                            <div class="relative backdrop-blur-sm rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl">
-                                <img src="${foto.src}" alt="${foto.titulo}" class="w-full h-auto max-h-[75vh] md:max-h-[82vh] object-contain bg-black/20" />
+            fotos.forEach((foto, i) => {
+                if (!viewport) return;
+                const slide = document.createElement("div");
+                slide.className = "slide-item absolute inset-0 cursor-pointer";
+                slide.setAttribute("data-index", i.toString());
+                slide.style.cssText = `opacity:${i === 0 ? "1" : "0"}; z-index:${i === 0 ? "2" : "1"};`;
+                slide.innerHTML = `
+                    <div class="w-full h-full overflow-hidden">
+                        <img src="${foto.src}" alt="${foto.alt}"
+                            class="slide-img w-full h-full object-cover"
+                            style="transform-origin: center center;" />
+                    </div>
+                    <div class="absolute inset-0"
+                        style="background: linear-gradient(135deg, rgba(235,204,196,0.08) 0%, transparent 50%, rgba(99,119,141,0.06) 100%);">
+                    </div>
+                    <div class="slide-hover-icon absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500">
+                        <div class="relative">
+                            <div class="w-20 h-20 rounded-full flex items-center justify-center"
+                                style="background: rgba(235,204,196,0.2); backdrop-filter: blur(8px); border: 1px solid rgba(235,204,196,0.4);">
+                                <svg class="w-8 h-8" fill="none" stroke="#c9968d" viewBox="0 0 24 24">
+                                    <circle cx="10.5" cy="10.5" r="6.5" stroke-width="1.5"></circle>
+                                    <path d="M15.5 15.5L21 21" stroke-width="1.5"></path>
+                                </svg>
                             </div>
+                            <div class="absolute inset-0 rounded-full animate-ping"
+                                style="border: 1px solid rgba(235,204,196,0.3);"></div>
                         </div>
-                    `;
-                    carruselTrack.appendChild(slide);
+                    </div>
+                `;
+                slide.addEventListener("mouseenter", () => {
+                    const icon = slide.querySelector(
+                        ".slide-hover-icon",
+                    ) as HTMLElement;
+                    if (icon) icon.style.opacity = "1";
                 });
-            }
+                slide.addEventListener("mouseleave", () => {
+                    const icon = slide.querySelector(
+                        ".slide-hover-icon",
+                    ) as HTMLElement;
+                    if (icon) icon.style.opacity = "0";
+                });
+                slide.addEventListener("click", () => abrirModal(i));
+                viewport.appendChild(slide);
 
-            if (miniaturasNav) {
-                fotos.forEach((_, index) => {
+                if (dotsLateral) {
+                    const dot = document.createElement("div");
+                    dot.className =
+                        "dot-lat transition-all duration-500 rounded-full";
+                    dot.style.cssText = `width:${i === 0 ? "8px" : "4px"}; height:${i === 0 ? "8px" : "4px"}; background:${i === 0 ? "rgba(235,204,196,0.9)" : "rgba(235,204,196,0.3)"}`;
+                    dotsLateral.appendChild(dot);
+                }
+
+                if (miniaturasTrack) {
                     const mini = document.createElement("button");
                     mini.className =
-                        "miniatura transition-all duration-300 hover:scale-110 focus:outline-none";
-                    mini.dataset.index = index.toString();
-                    mini.innerHTML = `<div class="relative"><div class="w-3 h-3 rounded-full bg-white/30 transition-all duration-300"></div></div>`;
-                    miniaturasNav.appendChild(mini);
+                        "miniatura-btn flex-shrink-0 snap-start rounded-xl overflow-hidden";
+                    mini.setAttribute("data-mini", i.toString());
+                    mini.style.cssText = `width:52px; height:52px; border:2px solid ${i === 0 ? "rgba(235,204,196,0.9)" : "rgba(235,204,196,0.2)"}; opacity:${i === 0 ? "1" : "0.6"};`;
+                    mini.innerHTML = `<img src="${foto.src}" alt="${foto.alt}" class="w-full h-full object-cover" />`;
+                    mini.addEventListener("click", () => {
+                        irASlide(i);
+                        clearTimeout(autoTimer);
+                        programarSiguiente();
+                    });
+                    miniaturasTrack.appendChild(mini);
+                }
+            });
+
+            let kbTween: gsap.core.Tween | null = null;
+            function iniciarKenBurns(index: number) {
+                if (kbTween) kbTween.kill();
+                const slides = document.querySelectorAll(".slide-item");
+                const img = slides[index]?.querySelector(
+                    ".slide-img",
+                ) as HTMLElement;
+                if (!img) return;
+                gsap.set(img, { scale: 1, x: "0%", y: "0%" });
+                const dirs = [
+                    { scale: 1.08, x: "-2%", y: "-2%" },
+                    { scale: 1.08, x: "2%", y: "-1%" },
+                    { scale: 1.06, x: "-1%", y: "2%" },
+                    { scale: 1.07, x: "1%", y: "-2%" },
+                    { scale: 1.06, x: "-2%", y: "1%" },
+                    { scale: 1.08, x: "2%", y: "2%" },
+                    { scale: 1.07, x: "-1%", y: "-1%" },
+                    { scale: 1.06, x: "2%", y: "-2%" },
+                    { scale: 1.08, x: "-2%", y: "2%" },
+                ];
+                const d = dirs[index % dirs.length];
+                kbTween = gsap.to(img, {
+                    scale: d.scale,
+                    x: d.x,
+                    y: d.y,
+                    duration: DURACION / 1000 + 1,
+                    ease: "none",
                 });
             }
 
-            const actualizarCarrusel = (
-                nuevo: number,
-                animacion: boolean = true,
-            ) => {
-                if (!carruselTrack) return;
-                indiceActual = (nuevo + fotos.length) % fotos.length;
-                const desplazamiento = -indiceActual * 100;
-                if (animacion) {
-                    gsap.to(carruselTrack, {
-                        x: `${desplazamiento}%`,
-                        duration: 0.7,
+            let progresoTween: gsap.core.Tween | null = null;
+            function iniciarProgreso() {
+                if (progresoTween) progresoTween.kill();
+                if (!progresoCirculo) return;
+                gsap.set(progresoCirculo, { strokeDashoffset: CIRCUNFERENCIA });
+                progresoTween = gsap.to(progresoCirculo, {
+                    strokeDashoffset: 0,
+                    duration: DURACION / 1000,
+                    ease: "none",
+                });
+            }
+
+            let slideActual = 0;
+            let autoTimer: any;
+            let pausado = false;
+            let rafId: number | null = null;
+
+            function actualizarDots(index: number) {
+                document.querySelectorAll(".dot-lat").forEach((d, i) => {
+                    const el = d as HTMLElement;
+                    el.style.width = i === index ? "8px" : "4px";
+                    el.style.height = i === index ? "8px" : "4px";
+                    el.style.background =
+                        i === index
+                            ? "rgba(235,204,196,0.9)"
+                            : "rgba(235,204,196,0.3)";
+                });
+                if (numSlide)
+                    numSlide.textContent = String(index + 1).padStart(2, "0");
+
+                document.querySelectorAll(".miniatura-btn").forEach((m, i) => {
+                    const el = m as HTMLElement;
+                    el.style.border =
+                        i === index
+                            ? "2px solid rgba(235,204,196,0.9)"
+                            : "2px solid rgba(235,204,196,0.2)";
+                    el.style.opacity = i === index ? "1" : "0.6";
+                });
+
+                const miniActiva = document.querySelector(
+                    `[data-mini="${index}"]`,
+                ) as HTMLElement;
+                const track = document.getElementById("miniaturas-track");
+                if (miniActiva && track) {
+                    const offsetLeft =
+                        miniActiva.offsetLeft -
+                        track.clientWidth / 2 +
+                        miniActiva.clientWidth / 2;
+                    track.scrollTo({ left: offsetLeft, behavior: "smooth" });
+                }
+            }
+
+            function irASlide(nuevoIndex: number) {
+                if (rafId !== null) cancelAnimationFrame(rafId);
+
+                const slides = document.querySelectorAll(".slide-item");
+                const anterior = slideActual;
+                slideActual = (nuevoIndex + fotos.length) % fotos.length;
+
+                const slideAnterior = slides[anterior] as HTMLElement;
+                const slideSiguiente = slides[slideActual] as HTMLElement;
+
+                slideAnterior.style.zIndex = "2";
+                slideSiguiente.style.zIndex = "3";
+                slideSiguiente.style.opacity = "0";
+
+                const duracionMs = 1400;
+                let start: number | null = null;
+
+                function frame(ts: number) {
+                    if (!start) start = ts;
+                    const t = Math.min((ts - start) / duracionMs, 1);
+                    const ease =
+                        t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+                    slideSiguiente.style.opacity = String(ease);
+                    slideAnterior.style.opacity = String(1 - ease);
+
+                    if (t < 1) {
+                        rafId = requestAnimationFrame(frame);
+                    } else {
+                        slideSiguiente.style.opacity = "1";
+                        slideSiguiente.style.zIndex = "2";
+                        slideAnterior.style.opacity = "0";
+                        slideAnterior.style.zIndex = "1";
+                        rafId = null;
+                    }
+                }
+
+                rafId = requestAnimationFrame(frame);
+                actualizarDots(slideActual);
+                iniciarKenBurns(slideActual);
+                iniciarProgreso();
+            }
+
+            function programarSiguiente() {
+                clearTimeout(autoTimer);
+                autoTimer = setTimeout(() => {
+                    if (!pausado) {
+                        irASlide(slideActual + 1);
+                        programarSiguiente();
+                    }
+                }, DURACION);
+            }
+
+            const wrapper = document.getElementById("galeria-wrapper");
+            wrapper?.addEventListener("mouseenter", () => {
+                pausado = true;
+                progresoTween?.pause();
+                kbTween?.pause();
+            });
+            wrapper?.addEventListener("mouseleave", () => {
+                pausado = false;
+                progresoTween?.resume();
+                kbTween?.resume();
+                programarSiguiente();
+            });
+
+            let touchX = 0;
+            viewport?.addEventListener(
+                "touchstart",
+                (e) => {
+                    touchX = e.touches[0].clientX;
+                },
+                { passive: true },
+            );
+            viewport?.addEventListener("touchend", (e) => {
+                const diff = touchX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) {
+                    irASlide(diff > 0 ? slideActual + 1 : slideActual - 1);
+                    programarSiguiente();
+                }
+            });
+
+            iniciarKenBurns(0);
+            actualizarDots(0);
+
+            // ── INTERSECTION OBSERVER ──
+            const observerGaleria = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            pausado = false;
+                            iniciarProgreso();
+                            programarSiguiente();
+                        } else {
+                            pausado = true;
+                            clearTimeout(autoTimer);
+                            autoTimer = null;
+                            progresoTween?.pause();
+                            kbTween?.pause();
+                            if (rafId !== null) {
+                                cancelAnimationFrame(rafId);
+                                rafId = null;
+                            }
+                        }
+                    });
+                },
+                { threshold: 0, rootMargin: "0px" },
+            );
+
+            const galeriaSection = document.getElementById("seccion-galeria");
+            if (galeriaSection) observerGaleria.observe(galeriaSection);
+
+            // ── MODAL ──
+            const modal = document.getElementById("modal-galeria");
+            const modalTrack = document.getElementById("modal-track");
+            const modalNum = document.getElementById("modal-num");
+            const modalTotal = document.getElementById("modal-total");
+            const modalDotsMini = document.getElementById("modal-dots-mini");
+            const btnAnterior = document.getElementById("btn-anterior");
+            const btnSiguiente = document.getElementById("btn-siguiente");
+            const cerrarModalBtn = document.getElementById("cerrar-modal");
+            const btnVerGaleria = document.getElementById("btn-ver-galeria");
+
+            if (modalTotal)
+                modalTotal.textContent = String(fotos.length).padStart(2, "0");
+
+            fotos.forEach((foto) => {
+                if (!modalTrack) return;
+                const slide = document.createElement("div");
+                slide.className =
+                    "min-w-full flex items-center justify-center px-2";
+                slide.innerHTML = `
+                    <div class="relative w-full rounded-2xl overflow-hidden" style="border:1px solid rgba(235,204,196,0.15);">
+                        <img src="${foto.src}" alt="${foto.alt}" class="w-full h-auto max-h-[80vh] object-contain" style="background:rgba(0,0,0,0.3);" />
+                    </div>
+                `;
+                modalTrack.appendChild(slide);
+            });
+
+            fotos.forEach((_, i) => {
+                if (!modalDotsMini) return;
+                const d = document.createElement("div");
+                d.className = "modal-dot-mini rounded-full";
+                d.style.cssText = `width:${i === 0 ? "16px" : "4px"}; height:4px; background:${i === 0 ? "rgba(235,204,196,0.8)" : "rgba(235,204,196,0.2)"}; transition:all 0.4s;`;
+                modalDotsMini.appendChild(d);
+            });
+
+            let indiceModal = 0;
+
+            function actualizarModalDots(index: number) {
+                document.querySelectorAll(".modal-dot-mini").forEach((d, i) => {
+                    const el = d as HTMLElement;
+                    el.style.width = i === index ? "16px" : "4px";
+                    el.style.background =
+                        i === index
+                            ? "rgba(235,204,196,0.8)"
+                            : "rgba(235,204,196,0.2)";
+                });
+                if (modalNum)
+                    modalNum.textContent = String(index + 1).padStart(2, "0");
+            }
+
+            const moverModal = (nuevo: number, animar = true) => {
+                if (!modalTrack) return;
+                indiceModal = (nuevo + fotos.length) % fotos.length;
+                if (animar) {
+                    gsap.to(modalTrack, {
+                        x: `-${indiceModal * 100}%`,
+                        duration: 0.6,
                         ease: "power3.out",
                     });
                 } else {
-                    gsap.set(carruselTrack, { x: `${desplazamiento}%` });
+                    gsap.set(modalTrack, { x: `-${indiceModal * 100}%` });
                 }
-                if (numeroActual) {
-                    gsap.to(numeroActual, {
-                        scale: 1.2,
-                        duration: 0.2,
-                        ease: "power2.out",
-                        onComplete: () => {
-                            numeroActual.textContent = (
-                                indiceActual + 1
-                            ).toString();
-                            gsap.to(numeroActual, {
-                                scale: 1,
-                                duration: 0.2,
-                                ease: "power2.in",
-                            });
-                        },
-                    });
-                }
-                if (tituloFoto) {
-                    gsap.to(tituloFoto, {
-                        opacity: 0,
-                        y: -10,
-                        duration: 0.2,
-                        ease: "power2.in",
-                        onComplete: () => {
-                            tituloFoto.textContent = fotos[indiceActual].titulo;
-                            gsap.to(tituloFoto, {
-                                opacity: 1,
-                                y: 0,
-                                duration: 0.3,
-                                ease: "power2.out",
-                            });
-                        },
-                    });
-                }
-                document.querySelectorAll(".miniatura").forEach((mini, idx) => {
-                    const dot = mini.querySelector("div > div");
-                    if (idx === indiceActual) {
-                        gsap.to(dot, {
-                            width: "2rem",
-                            height: "0.75rem",
-                            borderRadius: "9999px",
-                            backgroundColor: "#FF9E7F",
-                            duration: 0.4,
-                            ease: "power2.out",
-                        });
-                    } else {
-                        gsap.to(dot, {
-                            width: "0.75rem",
-                            height: "0.75rem",
-                            borderRadius: "9999px",
-                            backgroundColor: "rgba(255, 255, 255, 0.3)",
-                            duration: 0.4,
-                            ease: "power2.out",
-                        });
-                    }
-                });
+                actualizarModalDots(indiceModal);
             };
 
-            const abrirModal = (indice: number) => {
-                indiceActual = indice;
-                if (modal) {
-                    modal.classList.remove("hidden");
-                    modal.classList.add("flex");
-                    document.body.style.overflow = "hidden";
-                    actualizarCarrusel(indice, false);
-                    gsap.fromTo(
-                        modal,
-                        { opacity: 0 },
-                        { opacity: 1, duration: 0.4, ease: "power2.out" },
-                    );
-                    gsap.fromTo(
-                        "#modal-contenido",
-                        { scale: 0.85, opacity: 0 },
-                        {
-                            scale: 1,
-                            opacity: 1,
-                            duration: 0.6,
-                            ease: "power3.out",
-                            delay: 0.1,
-                        },
-                    );
-                    gsap.fromTo(
-                        "#info-foto",
-                        { opacity: 0, x: -20 },
-                        {
-                            opacity: 1,
-                            x: 0,
-                            duration: 0.5,
-                            ease: "power2.out",
-                            delay: 0.3,
-                        },
-                    );
-                    gsap.fromTo(
-                        [btnAnterior, btnSiguiente, cerrarModal],
-                        { opacity: 0, scale: 0.8 },
-                        {
-                            opacity: 1,
-                            scale: 1,
-                            duration: 0.4,
-                            ease: "back.out(2)",
-                            delay: 0.2,
-                            stagger: 0.05,
-                        },
-                    );
+            function crearParticulas() {
+                const container = document.getElementById("modal-particulas");
+                if (!container) return;
+                container.innerHTML = "";
+                for (let i = 0; i < 12; i++) {
+                    const p = document.createElement("div");
+                    p.style.cssText = `position:absolute; width:${Math.random() * 3 + 1}px; height:${Math.random() * 3 + 1}px; background:rgba(235,204,196,${Math.random() * 0.3 + 0.1}); border-radius:50%; left:${Math.random() * 100}%; top:${Math.random() * 100}%;`;
+                    container.appendChild(p);
+                    gsap.to(p, {
+                        y: -30 - Math.random() * 40,
+                        x: (Math.random() - 0.5) * 20,
+                        opacity: 0,
+                        duration: 3 + Math.random() * 4,
+                        repeat: -1,
+                        delay: Math.random() * 3,
+                        ease: "none",
+                    });
                 }
+            }
+
+            const abrirModal = (indice: number) => {
+                if (!modal) return;
+                pausado = true;
+                clearTimeout(autoTimer);
+                progresoTween?.pause();
+                kbTween?.pause();
+                modal.classList.remove("hidden");
+                modal.classList.add("flex");
+                document.body.style.overflow = "hidden";
+                moverModal(indice, false);
+                crearParticulas();
+                gsap.fromTo(
+                    modal,
+                    { opacity: 0 },
+                    { opacity: 1, duration: 0.5, ease: "power2.out" },
+                );
+                gsap.fromTo(
+                    "#modal-contenido",
+                    { scale: 0.88, opacity: 0, y: 20 },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.7,
+                        ease: "power3.out",
+                        delay: 0.1,
+                    },
+                );
             };
 
             const cerrarModalFn = () => {
-                if (modal) {
-                    gsap.to(
-                        [btnAnterior, btnSiguiente, cerrarModal, "#info-foto"],
-                        {
-                            opacity: 0,
-                            scale: 0.8,
-                            duration: 0.2,
-                            ease: "power2.in",
-                        },
-                    );
-                    gsap.to("#modal-contenido", {
-                        scale: 0.85,
-                        opacity: 0,
-                        duration: 0.3,
-                        ease: "power2.in",
-                    });
-                    gsap.to(modal, {
-                        opacity: 0,
-                        duration: 0.3,
-                        ease: "power2.in",
-                        delay: 0.1,
-                        onComplete: () => {
-                            modal.classList.add("hidden");
-                            modal.classList.remove("flex");
-                            document.body.style.overflow = "";
-                        },
-                    });
-                }
+                if (!modal) return;
+                gsap.to("#modal-contenido", {
+                    scale: 0.88,
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.4,
+                    ease: "power2.in",
+                });
+                gsap.to(modal, {
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: "power2.in",
+                    delay: 0.15,
+                    onComplete: () => {
+                        modal.classList.add("hidden");
+                        modal.classList.remove("flex");
+                        document.body.style.overflow = "";
+                        pausado = false;
+                        iniciarProgreso();
+                        programarSiguiente();
+                    },
+                });
             };
 
-            document.querySelectorAll(".foto-card").forEach((card) => {
-                card.addEventListener("click", () => {
-                    const indice = parseInt(
-                        card.getAttribute("data-index") || "0",
-                    );
-                    abrirModal(indice);
-                });
-            });
-
+            btnVerGaleria?.addEventListener("click", () => abrirModal(0));
             btnAnterior?.addEventListener("click", (e) => {
                 e.stopPropagation();
-                actualizarCarrusel(indiceActual - 1);
+                moverModal(indiceModal - 1);
             });
             btnSiguiente?.addEventListener("click", (e) => {
                 e.stopPropagation();
-                actualizarCarrusel(indiceActual + 1);
+                moverModal(indiceModal + 1);
             });
-            document.querySelectorAll(".miniatura").forEach((mini) => {
-                mini.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    actualizarCarrusel(
-                        parseInt((mini as HTMLElement).dataset.index || "0"),
-                    );
-                });
-            });
-            cerrarModal?.addEventListener("click", (e) => {
+            cerrarModalBtn?.addEventListener("click", (e) => {
                 e.stopPropagation();
                 cerrarModalFn();
-            });
-            document.addEventListener("keydown", (e) => {
-                if (modal && !modal.classList.contains("hidden")) {
-                    if (e.key === "Escape") cerrarModalFn();
-                    else if (e.key === "ArrowLeft")
-                        actualizarCarrusel(indiceActual - 1);
-                    else if (e.key === "ArrowRight")
-                        actualizarCarrusel(indiceActual + 1);
-                }
             });
             modal?.addEventListener("click", (e) => {
                 if (e.target === modal) cerrarModalFn();
             });
 
-            let touchStartX = 0,
-                touchEndX = 0,
-                touchStartY = 0,
-                touchEndY = 0,
-                isDragging = false;
+            document.addEventListener("keydown", (e) => {
+                if (modal && !modal.classList.contains("hidden")) {
+                    if (e.key === "Escape") cerrarModalFn();
+                    if (e.key === "ArrowLeft") moverModal(indiceModal - 1);
+                    if (e.key === "ArrowRight") moverModal(indiceModal + 1);
+                }
+            });
+
+            let mTouchX = 0;
             modal?.addEventListener(
                 "touchstart",
                 (e) => {
-                    touchStartX = e.touches[0].clientX;
-                    touchStartY = e.touches[0].clientY;
-                    isDragging = true;
+                    mTouchX = e.touches[0].clientX;
                 },
                 { passive: true },
             );
-            modal?.addEventListener(
-                "touchmove",
-                (e) => {
-                    if (isDragging) {
-                        touchEndX = e.touches[0].clientX;
-                        touchEndY = e.touches[0].clientY;
-                    }
-                },
-                { passive: true },
-            );
-            modal?.addEventListener("touchend", () => {
-                if (isDragging) {
-                    const diffX = touchStartX - touchEndX;
-                    const diffY = Math.abs(touchStartY - touchEndY);
-                    if (Math.abs(diffX) > 60 && Math.abs(diffX) > diffY * 2) {
-                        actualizarCarrusel(
-                            diffX > 0 ? indiceActual + 1 : indiceActual - 1,
-                        );
-                    }
-                    isDragging = false;
-                }
+            modal?.addEventListener("touchend", (e) => {
+                const diff = mTouchX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 60)
+                    moverModal(diff > 0 ? indiceModal + 1 : indiceModal - 1);
             });
         });
     }
 </script>
 
 <style>
-    .foto-card {
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    #slides-viewport {
         position: relative;
+        contain: strict;
+        will-change: transform;
     }
-    .foto-card::before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        border-radius: 2rem;
-        padding: 2px;
-        background: linear-gradient(
-            135deg,
-            transparent,
-            rgba(255, 158, 127, 0.3),
-            transparent
-        );
-        -webkit-mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.5s ease;
+    .slide-item {
+        will-change: opacity;
+        contain: layout style;
     }
-    .foto-card:hover::before {
-        opacity: 1;
+    .slide-img {
+        will-change: transform;
     }
-    .foto-card:hover {
-        transform: translateY(-20px) scale(1.02);
-        box-shadow:
-            0 40px 80px -20px rgba(255, 158, 127, 0.3),
-            0 20px 40px -20px rgba(255, 158, 127, 0.2),
-            0 0 100px -20px rgba(255, 158, 127, 0.1);
+    #modal-track {
+        will-change: transform;
+        display: flex;
     }
-    @keyframes ping-slow {
-        0%,
+    #miniaturas-track::-webkit-scrollbar {
+        display: none;
+    }
+    .miniatura-btn {
+        transition:
+            border 0.3s,
+            opacity 0.3s;
+    }
+    .miniatura-btn:hover {
+        opacity: 1 !important;
+        transform: scale(1.08);
+    }
+    .boton-galeria {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 28px;
+        background: #ebccc4;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .boton-galeria:hover {
+        background: #4e6070;
+        box-shadow: 0 4px 16px rgba(99, 119, 141, 0.4);
+        transform: translateY(-2px);
+    }
+    @keyframes ping {
+        75%,
         100% {
-            transform: scale(1);
-            opacity: 0.3;
-        }
-        50% {
-            transform: scale(1.5);
+            transform: scale(1.6);
             opacity: 0;
         }
     }
     .animate-ping {
-        animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-    .animate-ping-slow {
-        animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    .animate-fade-in {
-        animation: fade-in 0.6s ease-out forwards;
-    }
-    .miniatura {
-        cursor: pointer;
-    }
-    #carrusel-track {
-        will-change: transform;
-    }
-    #carrusel-track img {
-        will-change: transform;
-        backface-visibility: hidden;
-    }
-    button {
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-    }
-    button:active {
-        transform: scale(0.95);
-    }
-    button:focus-visible {
-        outline: 2px solid #ff9e7f;
-        outline-offset: 3px;
-    }
-    .foto-card,
-    .miniatura,
-    button {
-        user-select: none;
-        -webkit-user-select: none;
-        -webkit-touch-callout: none;
-    }
-    @media (max-width: 768px) {
-        .foto-card:hover {
-            transform: translateY(-12px) scale(1.01);
-        }
-    }
-    #modal-galeria {
-        overscroll-behavior: contain;
-        -webkit-overflow-scrolling: touch;
-        transition: opacity 0.3s ease;
-    }
-    * {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
 </style>

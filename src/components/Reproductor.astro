@@ -10,15 +10,15 @@
   >
     <!-- Efecto de brillo de fondo -->
     <div
-      class="absolute inset-0 bg-gradient-to-br from-[#3A5A97]/10 via-transparent to-[#FF9E7F]/5 pointer-events-none"
+      class="absolute inset-0 bg-gradient-to-br from-[#1B3A6B]/10 via-transparent to-[#2E5FA3]/5 pointer-events-none"
     >
     </div>
     <div
-      class="absolute -top-20 -right-20 w-40 h-40 bg-[#3A5A97]/10 rounded-full blur-3xl pointer-events-none"
+      class="absolute -top-20 -right-20 w-40 h-40 bg-[#1B3A6B]/10 rounded-full blur-3xl pointer-events-none"
     >
     </div>
     <div
-      class="absolute -bottom-20 -left-20 w-32 h-32 bg-[#FF9E7F]/10 rounded-full blur-3xl pointer-events-none"
+      class="absolute -bottom-20 -left-20 w-32 h-32 bg-[#2E5FA3]/10 rounded-full blur-3xl pointer-events-none"
     >
     </div>
 
@@ -30,37 +30,19 @@
           <div
             class="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8"
           >
-            <!-- 🦋 MARIPOSA IZQUIERDA -->
-            <!-- <div id="mariposa-izq" class="flex-shrink-0">
-              <img
-                src="/gif/mariposaVerde.gif"
-                alt="Mariposa izquierda"
-                class="w-8 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain"
-              />
-            </div> -->
-
             <!-- TEXTO CENTRAL -->
             <div id="titulo" class="flex-shrink min-w-0">
               <h3
-                class="font-great-vibes text-xl sm:text-2xl md:text-2xl text-[#3A5A97] mb-2"
+                class="font-great-vibes text-xl sm:text-2xl md:text-2xl text-[#1B3A6B] mb-2"
               >
                 Mi Canción Especial
               </h3>
             </div>
-
-            <!-- 🦋 MARIPOSA DERECHA -->
-            <!-- <div id="mariposa-der" class="flex-shrink-0">
-              <img
-                src="/gif/mariposaVerde.gif"
-                alt="Mariposa derecha"
-                class="w-8 h-auto sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 object-contain scale-x-[-1]"
-              />
-            </div> -->
           </div>
         </div>
         <p
           id="romantic-text"
-          class="text-xs sm:text-sm italic text-[#3A5A97]/70 font-medium w-full text-center px-2"
+          class="text-xs sm:text-sm italic text-[#2E5FA3]/70 font-medium w-full text-center px-2"
         >
           ✨ Una melodía para recordar siempre ✨
         </p>
@@ -74,7 +56,7 @@
         <!-- Botón anterior -->
         <button
           id="prevBtn"
-          class="text-[#3A5A97]/60 hover:text-[#3A5A97] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
+          class="text-[#1B3A6B]/60 hover:text-[#1B3A6B] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M7 6v12l-2-2V8l2-2zm2 6l8-5v10l-8-5z"></path>
@@ -84,11 +66,11 @@
         <!-- Botón principal corazón -->
         <button
           id="playPauseBtn"
-          class="relative text-[#FF9E7F] text-4xl sm:text-5xl transition-all duration-300 transform hover:scale-110 focus:outline-none group"
+          class="relative text-[#2E5FA3] text-4xl sm:text-5xl transition-all duration-300 transform hover:scale-110 focus:outline-none group"
         >
           <!-- Fondo del botón corazón -->
           <div
-            class="absolute inset-0 bg-gradient-to-br from-[#FF9E7F]/20 to-[#3A5A97]/10 rounded-full blur-lg scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            class="absolute inset-0 bg-gradient-to-br from-[#2E5FA3]/20 to-[#1B3A6B]/10 rounded-full blur-lg scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           >
           </div>
 
@@ -142,7 +124,7 @@
         <!-- Botón siguiente -->
         <button
           id="nextBtn"
-          class="text-[#3A5A97]/60 hover:text-[#3A5A97] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
+          class="text-[#1B3A6B]/60 hover:text-[#1B3A6B] transition-all duration-300 text-xl sm:text-2xl p-3 rounded-full hover:bg-white/20 transform hover:scale-110 focus:outline-none"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17 18V6l2 2v8l-2 2zm-2-6L7 7v10l8-5z"></path>
@@ -153,10 +135,10 @@
       <!-- Barra de progreso elegante -->
       <div class="px-2 sm:px-4" id="progress-container">
         <div
-          class="flex items-center justify-between text-xs sm:text-sm text-[#3A5A97]/60 mb-3 font-medium"
+          class="flex items-center justify-between text-xs sm:text-sm text-[#1B3A6B]/60 mb-3 font-medium"
         >
           <span id="currentTime">0:00</span>
-          <span class="text-[#FF9E7F]/80">♪</span>
+          <span class="text-[#2E5FA3]/80">♪</span>
           <span id="totalDuration">--:--</span>
         </div>
 
@@ -167,7 +149,7 @@
             id="progressBar"
             value="0"
             max="100"
-            class="w-full h-2 bg-gradient-to-r from-[#3A5A97]/20 to-[#3A5A97]/10 rounded-full appearance-none cursor-pointer slider-elegant"
+            class="w-full h-2 bg-gradient-to-r from-[#1B3A6B]/20 to-[#1B3A6B]/10 rounded-full appearance-none cursor-pointer slider-elegant"
           />
         </div>
       </div>
@@ -338,7 +320,7 @@
         transform: translate(-50%, -50%);
         width: 60px;
         height: 60px;
-        border: 2px solid #FF9E7F;
+        border: 2px solid #2E5FA3;
         border-radius: 50%;
         opacity: 0;
         pointer-events: none;
@@ -467,38 +449,39 @@
   .slider-elegant {
     background: linear-gradient(
       to right,
-      rgba(58, 90, 151, 0.3),
-      rgba(58, 90, 151, 0.1)
+      rgba(27, 58, 107, 0.3),
+      rgba(27, 58, 107, 0.1)
     );
     outline: none;
     border-radius: 15px;
   }
 
+  /* ✅ Thumb del slider: gradiente azul marino → azul claro */
   .slider-elegant::-webkit-slider-thumb {
     appearance: none;
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #3a5a97, #ff9e7f);
+    background: linear-gradient(135deg, #1b3a6b, #2e5fa3);
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(58, 90, 151, 0.3);
+    box-shadow: 0 2px 8px rgba(27, 58, 107, 0.3);
     border: 3px solid rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
   }
 
   .slider-elegant::-webkit-slider-thumb:hover {
     transform: scale(1.2);
-    box-shadow: 0 4px 12px rgba(255, 158, 127, 0.5);
+    box-shadow: 0 4px 12px rgba(46, 95, 163, 0.5);
   }
 
   .slider-elegant::-moz-range-thumb {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #3a5a97, #ff9e7f);
+    background: linear-gradient(135deg, #1b3a6b, #2e5fa3);
     cursor: pointer;
     border: 3px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 2px 8px rgba(58, 90, 151, 0.3);
+    box-shadow: 0 2px 8px rgba(27, 58, 107, 0.3);
   }
 
   @keyframes heartbeat {
@@ -534,9 +517,9 @@
     bottom: -2px;
     background: linear-gradient(
       45deg,
-      rgba(58, 90, 151, 0.1),
+      rgba(27, 58, 107, 0.1),
       transparent,
-      rgba(255, 158, 127, 0.1)
+      rgba(46, 95, 163, 0.1)
     );
     border-radius: inherit;
     z-index: -1;

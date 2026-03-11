@@ -2,11 +2,7 @@
 // CodigoVestimenta.astro
 ---
 
-<section class="py-2 px-4 relative overflow-hidden">
-  <!-- <div
-    class="absolute inset-0 bg-gradient-to-b from-[#fffaf5]/40 via-[#fff9f0]/20 to-[#fffaf5]/40 z-0"
-  > -->
-</section>
+<section class="py-2 px-4 relative overflow-hidden"></section>
 
 <div class="max-w-xl mx-auto text-center relative z-10">
   <!-- 🍃 HOJAS LATERALES IZQUIERDA -->
@@ -45,15 +41,15 @@
   <!-- TÍTULO -->
   <div class="mb-6" id="titulo-vestimenta">
     <h2
-      class="font-charm text-2xl md:text-3xl lg:text-3xl text-[#FF9E7F] font-bold tracking-wide mb-4"
+      class="font-charm text-2xl md:text-3xl lg:text-3xl text-[#2E5FA3] font-bold tracking-wide mb-4"
     >
       CÓDIGO DE VESTIMENTA
     </h2>
     <div class="flex items-center justify-center gap-3">
-      <div class="w-16 h-[2px] bg-gradient-to-r from-transparent to-[#FF9E7F]">
+      <div class="w-16 h-[2px] bg-gradient-to-r from-transparent to-[#2E5FA3]">
       </div>
-      <div class="w-2 h-2 rounded-full bg-[#FF9E7F]"></div>
-      <div class="w-16 h-[2px] bg-gradient-to-l from-transparent to-[#FF9E7F]">
+      <div class="w-2 h-2 rounded-full bg-[#2E5FA3]"></div>
+      <div class="w-16 h-[2px] bg-gradient-to-l from-transparent to-[#2E5FA3]">
       </div>
     </div>
   </div>
@@ -70,7 +66,7 @@
   <!-- DESCRIPCIÓN -->
   <div class="mb-3" id="descripcion-vestimenta">
     <p
-      class="font-charm text-3xl md:text-4xl text-[#FF9E7F] font-bold leading-relaxed"
+      class="font-charm text-3xl md:text-4xl text-[#2E5FA3] font-bold leading-relaxed"
     >
       Libre
     </p>
@@ -78,7 +74,7 @@
 
   <!-- NOTA -->
   <div class="mb-2" id="nota-vestimenta">
-    <p class="font-charm text-lg md:text-xl text-[#3A5A97] leading-relaxed">
+    <p class="font-charm text-lg md:text-xl text-[#1B3A6B] leading-relaxed">
       A su elección
     </p>
   </div>
@@ -159,11 +155,7 @@
           const tl = gsap.timeline();
           tl.to(
             "#separador-superior, #titulo-vestimenta, #imagen-vestimenta, #descripcion-vestimenta, #nota-vestimenta, #hoja-izq-vestimenta, #hoja-der-vestimenta",
-            {
-              opacity: 0,
-              duration: 0.6,
-              ease: "power2.in",
-            },
+            { opacity: 0, duration: 0.6, ease: "power2.in" },
           )
             .to(
               "#separador-superior",
@@ -187,9 +179,10 @@
 </script>
 
 <style>
+  /* Icono con tinte azul marino */
   .icono-azul {
-    filter: brightness(0) saturate(100%) invert(27%) sepia(50%) saturate(800%)
-      hue-rotate(195deg) brightness(90%) contrast(90%);
+    filter: brightness(0) saturate(100%) invert(18%) sepia(60%) saturate(800%)
+      hue-rotate(200deg) brightness(85%) contrast(95%);
     transition:
       filter 0.3s ease,
       transform 0.3s ease;
@@ -206,7 +199,7 @@
 
   #descripcion-vestimenta:hover p {
     transform: scale(1.05);
-    text-shadow: 0 2px 8px rgba(255, 158, 127, 0.3);
+    text-shadow: 0 2px 8px rgba(46, 95, 163, 0.3);
   }
 
   #imagen-vestimenta img {
@@ -215,7 +208,7 @@
 
   #imagen-vestimenta:hover img {
     transform: scale(1.1);
-    filter: drop-shadow(0 8px 20px rgba(255, 158, 127, 0.4));
+    filter: drop-shadow(0 8px 20px rgba(46, 95, 163, 0.4));
   }
 
   #separador-superior img {
